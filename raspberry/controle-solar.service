@@ -1,0 +1,14 @@
+[Unit]
+Description=Leitor do inversor Anenji -> MQTT (controle solar)
+After=network-online.target mosquitto.service
+Wants=network-online.target mosquitto.service
+
+[Service]
+# Ajuste o usuário e o caminho do script
+User=pi
+ExecStart=/usr/bin/python3 /home/pi/controle_solar/leitor_inversor.py
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
